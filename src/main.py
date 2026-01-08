@@ -1,6 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
-from api.v1.processar_documentos import processar_documentos
+from api.v1.endpoints.processar_documentos import processar_documentos
 
 app = FastAPI(
     title="MTE - SEI Inteligent Extraction",
