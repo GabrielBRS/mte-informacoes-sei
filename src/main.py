@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api.v1.router import api_router
+# from api.v1.router import api_router
 from core.config import settings
-from core.logging import setup_logging
+# from core.logging import setup_logging
 
-setup_logging()
+# setup_logging()
 
 async def lifespan(app: FastAPI):
     print(f"Iniciando {settings.PROJECT_NAME} no Python 3.13...")
@@ -18,7 +18,6 @@ app = FastAPI(
     openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
 
-# 4. Middlewares
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -27,7 +26,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(api_router, prefix=settings.API_V1_STR)
+# app.include_router(api_router, prefix=settings.API_V1_STR)
 
 @app.get("/health", tags=["Health"])
 async def health_check():
